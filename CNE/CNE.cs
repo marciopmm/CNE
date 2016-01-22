@@ -6,10 +6,43 @@ namespace CNE
 {
 	public class App : Application
 	{
+		public static App Current { get; private set; }
+
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new NavigationPage(new CNE.MainPage());
+			Current = this;
+
+			var sessionID = UserData.Load ();
+
+			if (string.IsNullOrWhiteSpace(sessionID)) {
+				sessionID = Properties.ContainsKey("SessionID") ? (string)Properties ["SessionID"] : null;
+			}
+
+			if (!string.IsNullOrWhiteSpace(sessionID)) {
+				//TODO: Validar sessao na API
+				// Se estiver OK, inicia normalmente
+				UserData.Save (sessionID);
+				MainPage = new NavigationPage (new CNE.MainPage ());
+			}
+			else 
+				MainPage = new LoginPage ();			
+		}
+
+		public void ShowMainPage ()
+		{	
+			var sessionID = Properties.ContainsKey("SessionID") ? (string)Properties ["SessionID"] : null;
+			if (!string.IsNullOrWhiteSpace (sessionID)) {
+				UserData.Save (sessionID);
+				MainPage = new NavigationPage (new CNE.MainPage ());
+			} else {
+				MainPage = new LoginPage ();
+			}
+		}
+
+		public void Logout ()
+		{
+			Properties ["SessionID"] = null;
+			MainPage = new LoginPage ();
 		}
 
 		protected override void OnStart ()

@@ -27,15 +27,16 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -79,6 +80,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -102,6 +104,15 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\logo.png" />
     <AndroidResource Include="Resources\drawable\LogoCNE200.jpg" />
+    <AndroidResource Include="Resources\drawable\person.png" />
+    <AndroidResource Include="Resources\drawable\star0.png" />
+    <AndroidResource Include="Resources\drawable\star1.png" />
+    <AndroidResource Include="Resources\drawable\star2.png" />
+    <AndroidResource Include="Resources\drawable\star3.png" />
+    <AndroidResource Include="Resources\drawable\star4.png" />
+    <AndroidResource Include="Resources\drawable\star5.png" />
+    <AndroidResource Include="Resources\drawable\stargray.png" />
+    <AndroidResource Include="Resources\drawable\staryellow.png" />
   </ItemGroup>
   <Import Project="..\CNE\CNE.projitems" Label="Shared" Condition="Exists('..\CNE\CNE.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -8,7 +8,6 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="180" />
 				<RowDefinition Height="*" />
-				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
@@ -21,12 +20,8 @@
 						 HorizontalOptions="CenterAndExpand"
 						 VerticalOptions="CenterAndExpand">
 				<Image Source="LogoCNE200.jpg"
-					   Aspect="AspectFit" />
-
-							
+					   Aspect="AspectFit" />							
 			</StackLayout>
-
-
 
 			<StackLayout Grid.Row="1"
 						 Grid.Column="0"
@@ -54,24 +49,6 @@
 
 				<Button x:Name="btnProcurar"
 						Text="Procurar" />
-			</StackLayout>
-
-			<StackLayout Grid.Row="2"
-						 Grid.Column="0"
-						 Orientation="Horizontal"
-						 Spacing="20"
-						 Padding="20" >
-				<Button x:Name="btnEntrar"
-						Text="Entrar" 
-						HorizontalOptions="CenterAndExpand"/>
-				<StackLayout Orientation="Vertical">
-					<Label Text="Não possui conta?" 
-						   HorizontalOptions="CenterAndExpand"/>
-					<Button x:Name="btnCriarConta"
-						Text="Crie sua conta! É gratis!"
-						HorizontalOptions="CenterAndExpand" />
-				</StackLayout>
-
 			</StackLayout>
 		</Grid>
 	</ContentPage.Content>

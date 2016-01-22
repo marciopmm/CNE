@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="CNE.LoginPage"
+			 Title="Login">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical"
+					 HorizontalOptions="FillAndExpand"
+					 VerticalOptions="CenterAndExpand"
+					 Padding="40"
+					 Spacing="40">
+
+			<Image Source="LogoCNE200.jpg"
+					   Aspect="AspectFit" />
+
+			<StackLayout Orientation="Vertical"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="CenterAndExpand">
+				<Label Text="Email"
+					   HorizontalOptions="StartAndExpand" />
+				<Entry x:Name="txtEmail"
+					   Placeholder="Email"
+					   HorizontalOptions="FillAndExpand"
+					   VerticalOptions="CenterAndExpand" />
+			</StackLayout>
+
+			<StackLayout Orientation="Vertical"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="CenterAndExpand">
+				<Label Text="Senha"
+					   HorizontalOptions="StartAndExpand" />
+				<Entry x:Name="txtSenha"
+					   Placeholder="Senha" />
+			</StackLayout>
+
+			<Button x:Name="btnLogin"
+					HorizontalOptions="FillAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Text="Login" />
+
+			<StackLayout Orientation="Vertical">
+					<Label Text="Não possui conta?" 
+						   Style="{DynamicResource CaptionStyle}"
+						   HorizontalOptions="CenterAndExpand"/>
+					<Button x:Name="btnCriarConta"
+						Text="Crie sua conta! É gratis!"
+						HorizontalOptions="CenterAndExpand" />
+				</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="CNE.EmployeeRegisterPage2"
+			 Title="Registro de Profissional">
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout Orientation="Vertical">
+				<TableView Intent="Form">
+					<TableRoot>
+						<TableSection Title="Dados pessoais">
+							<EntryCell x:Name="celNome" Label="Nome" />
+							<EntryCell x:Name="celSobrenome" Label="Sobrenome" />
+							<EntryCell x:Name="celCpf" Label="CPF" />
+							<EntryCell x:Name="celDtNasc" Label="Data de Nascimento" Placeholder="dd/mm/aaaa" />
+						</TableSection>
+						<TableSection Title="Dados profissionais">
+							<EntryCell x:Name="celCelular" Label="Tel. Celular" />
+							<EntryCell x:Name="celTelefone" Label="Tel. Residencial" />
+							<SwitchCell x:Name="swtAceitaDormir" Text="Aceita dormir no trabalho?" />
+						</TableSection>
+						<TableSection x:Name="secEspecialidades" Title="Especialidades">
+							<SwitchCell Text="Arrumadeira" />
+							<SwitchCell Text="Babá" />
+							<SwitchCell Text="Babá folguista" />
+							<SwitchCell Text="Caseiro" />
+							<SwitchCell Text="Copeiro" />
+							<SwitchCell Text="Cuidador de Animais" />
+							<SwitchCell Text="Cuidador de Idosos" />
+							<SwitchCell Text="Diarista" />
+							<SwitchCell Text="Empregada Doméstica" />
+							<SwitchCell Text="Governanta / Mordomo" />
+							<SwitchCell Text="Home Organizer" />
+							<SwitchCell Text="Motorista" />
+						</TableSection>
+					</TableRoot>			
+				</TableView>
+				<Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="CenterAndExpand" />
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

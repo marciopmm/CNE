@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="CNE.EmployerRegisterPage2"
+			 Title="Registro de Contratante">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical"
+					 HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand" 
+					 Padding="20"
+					 Spacing="40">							
+
+			<StackLayout Orientation="Vertical">
+				<Label Text="Nome"
+				   Style="{DynamicResource CaptionStyle}"
+				   HorizontalTextAlignment="Start" />
+				<Entry Placeholder="Nome"
+				   x:Name="txtNome"
+				   HorizontalOptions="FillAndExpand"
+				   VerticalOptions="CenterAndExpand"  />
+			</StackLayout>
+
+			<StackLayout Orientation="Vertical">
+				<Label Text="Sobrenome"
+				   Style="{DynamicResource CaptionStyle}"
+				   HorizontalTextAlignment="Start" />
+				<Entry Placeholder="Sobrenome"
+				   x:Name="txtSobrenome"
+				   HorizontalOptions="FillAndExpand"
+				   VerticalOptions="CenterAndExpand"  />
+			</StackLayout>				
+
+			<StackLayout Orientation="Vertical">
+				<Label Text="CPF"
+				   Style="{DynamicResource CaptionStyle}"
+				   HorizontalTextAlignment="Start" />
+				<Entry Placeholder="CPF"
+				   x:Name="txtCpf"
+				   HorizontalOptions="FillAndExpand"
+				   VerticalOptions="CenterAndExpand"  />
+			</StackLayout>
+
+			<StackLayout Orientation="Vertical">
+				<Label Text="Sexo"
+				   Style="{DynamicResource CaptionStyle}"
+				   HorizontalTextAlignment="Start" />
+				<Picker x:Name="pckSexo"
+					HorizontalOptions="FillAndExpand"
+					VerticalOptions="CenterAndExpand"  />
+			</StackLayout>
+
+			<StackLayout Orientation="Vertical">
+				<Label Text="Data de Nascimento"
+				   Style="{DynamicResource CaptionStyle}"
+				   HorizontalTextAlignment="Start" />
+				<DatePicker x:Name="pckDtNasc"
+						HorizontalOptions="FillAndExpand"
+					 	VerticalOptions="CenterAndExpand"  />
+			</StackLayout>
+
+			<Button x:Name="btnRegistrar"
+					Text="Registrar" 
+					HorizontalOptions="FillAndExpand"
+					VerticalOptions="CenterAndExpand" />		
+		</StackLayout>	
+	</ContentPage.Content>
+</ContentPage>

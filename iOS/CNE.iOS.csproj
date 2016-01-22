@@ -123,5 +123,14 @@
   <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
     <BundleResource Include="Resources\LogoCNE200.jpg" />
+    <BundleResource Include="Resources\person.png" />
+    <BundleResource Include="Resources\star0.png" />
+    <BundleResource Include="Resources\star1.png" />
+    <BundleResource Include="Resources\star2.png" />
+    <BundleResource Include="Resources\star3.png" />
+    <BundleResource Include="Resources\star4.png" />
+    <BundleResource Include="Resources\star5.png" />
+    <BundleResource Include="Resources\stargray.png" />
+    <BundleResource Include="Resources\staryellow.png" />
   </ItemGroup>
 </Project>

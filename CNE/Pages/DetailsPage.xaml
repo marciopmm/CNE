@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="CNE.DetailsPage"
+			 Title="Informações do Profissional">
+	<ContentPage.Content>
+		<ScrollView>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="276" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="50" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<StackLayout Grid.Row="0"
+							 Grid.Column="0"
+							 Orientation="Vertical"
+							 HorizontalOptions="CenterAndExpand"
+							 VerticalOptions="StartAndExpand"
+							 Padding="10">
+					<Image	x:Name="imgProfissional"
+						       Source="person.png" 
+						       HorizontalOptions="Center"
+						       VerticalOptions="Start"
+						       Aspect="Fill"/>
+		       	</StackLayout>
+
+				<StackLayout Grid.Row="1"
+							 Grid.Column="0"
+							 Orientation="Vertical"
+							 HorizontalOptions="FillAndExpand"
+							 VerticalOptions="FillAndExpand"
+							 Padding="20">
+
+					<Label HorizontalOptions="FillAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Nome do Profissional" />
+				    <Label x:Name="lblNome"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}" />
+
+					<Label HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Especialidades" />
+					<Label x:Name="lblEspecialidades"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}" />					
+
+					<Label HorizontalOptions="FillAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Qualificações recebidas" />
+					<StackLayout Orientation="Horizontal">
+						<Label x:Name="lblQtdQualificacoes"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}"
+						   Text="23 qualificações" />
+						<Image x:Name="imgEstrelas"
+							   Source="star4.png" 
+							   Aspect="AspectFit" />
+					</StackLayout>				    
+
+					<Label HorizontalOptions="FillAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Comentarios recebidos" />
+					<StackLayout x:Name="stkComentarios"
+								 Orientation="Vertical">
+					</StackLayout>				
+
+					<Label HorizontalOptions="FillAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Telefone Celular" />
+				    <Label x:Name="lblCelular"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}" />
+
+					<Label HorizontalOptions="FillAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Telefone Residencial" />
+				    <Label x:Name="lblTelefone"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}" />    
+
+					<Label HorizontalOptions="FillAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Endereço" />
+				    <Label x:Name="lblEndereco"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}"
+						   Text="Rua das Palmeiras, 345 fundos - Vila Cafundó - São Paulo/SP - 02351-010" />
+						   					
+				</StackLayout>
+
+				<Button Grid.Row="2"
+						Grid.Column="0"
+						HorizontalOptions="CenterAndExpand"
+						VerticalOptions="CenterAndExpand"
+						x:Name="btnAvaliar" 
+						Text="Avalie este profissional" />
+			</Grid>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

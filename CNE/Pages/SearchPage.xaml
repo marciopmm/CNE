@@ -4,8 +4,7 @@
 			x:Class="CNE.SearchPage"
 			Title="Resultados da Pesquisa">
 	<ContentPage.Content>
-		<ListView x:Name="lstPesquisa"
-				  RowHeight="50">
+		<ListView x:Name="lstPesquisa">
 		</ListView>
 	</ContentPage.Content>
 </ContentPage>

@@ -3315,8 +3315,35 @@ namespace CNE.Droid
 			// aapt resource value: 0x7f020064
 			public const int mr_ic_settings_light = 2130837604;
 			
+			// aapt resource value: 0x7f02006e
+			public const int notification_template_icon_bg = 2130837614;
+			
 			// aapt resource value: 0x7f020065
-			public const int notification_template_icon_bg = 2130837605;
+			public const int person = 2130837605;
+			
+			// aapt resource value: 0x7f020066
+			public const int star0 = 2130837606;
+			
+			// aapt resource value: 0x7f020067
+			public const int star1 = 2130837607;
+			
+			// aapt resource value: 0x7f020068
+			public const int star2 = 2130837608;
+			
+			// aapt resource value: 0x7f020069
+			public const int star3 = 2130837609;
+			
+			// aapt resource value: 0x7f02006a
+			public const int star4 = 2130837610;
+			
+			// aapt resource value: 0x7f02006b
+			public const int star5 = 2130837611;
+			
+			// aapt resource value: 0x7f02006c
+			public const int stargray = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int staryellow = 2130837613;
 			
 			static Drawable()
 			{

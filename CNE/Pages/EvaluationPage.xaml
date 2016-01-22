@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="CNE.EvaluationPage"
+			 Title="Avaliação">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical"
+					 HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand"
+					 Padding="20">
+
+			<StackLayout Orientation="Vertical"
+					 HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand">
+				<Label HorizontalOptions="StartAndExpand"					   
+					   Style="{DynamicResource CaptionStyle}"
+					   Text="Nome do Profissional" />
+			    <Label x:Name="lblNome"
+			    	   HorizontalOptions="StartAndExpand"
+					   Style="{DynamicResource TitleStyle}" />
+			</StackLayout>
+
+			<StackLayout Orientation="Vertical"
+					 HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand">
+				<Label HorizontalOptions="StartAndExpand"					   
+					   Style="{DynamicResource CaptionStyle}"
+					   Text="Estrelas" />
+				<Slider x:Name="sldEstrelas"
+			    	    HorizontalOptions="FillAndExpand"
+					    Style="{DynamicResource TitleStyle}" />
+				<Image x:Name="imgEstrelas"						
+					   Aspect="AspectFit" />
+			</StackLayout>
+
+			<StackLayout Orientation="Vertical"
+					 HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand">
+				<Label HorizontalOptions="StartAndExpand"					   
+					   Style="{DynamicResource CaptionStyle}"
+					   Text="Comentário" />
+				<Editor x:Name="txtComentario"
+			    	   	HorizontalOptions="StartAndExpand"
+			    	   	VerticalOptions="FillAndExpand"
+					   	Style="{DynamicResource TitleStyle}" />
+			</StackLayout>
+
+			<Button x:Name="btnEnviar"
+					HorizontalOptions="CenterAndExpand"
+			    	VerticalOptions="CenterAndExpand"
+					Text="Enviar avaliação" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
