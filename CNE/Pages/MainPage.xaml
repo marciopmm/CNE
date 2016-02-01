@@ -8,6 +8,7 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="180" />
 				<RowDefinition Height="*" />
+				<RowDefinition Height="70" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
@@ -50,6 +51,11 @@
 				<Button x:Name="btnProcurar"
 						Text="Procurar" />
 			</StackLayout>
+
+			<Button Grid.Row="2"
+					Grid.Column="0"
+					x:Name="btnSair"
+						Text="Sair" />
 		</Grid>
 	</ContentPage.Content>
 </ContentPage>

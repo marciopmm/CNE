@@ -11,7 +11,7 @@ namespace CNE
 		public App ()
 		{
 			Current = this;
-
+			var service = new RestService ();
 			var sessionID = UserData.Load ();
 
 			if (string.IsNullOrWhiteSpace(sessionID)) {
@@ -19,10 +19,15 @@ namespace CNE
 			}
 
 			if (!string.IsNullOrWhiteSpace(sessionID)) {
-				//TODO: Validar sessao na API
-				// Se estiver OK, inicia normalmente
-				UserData.Save (sessionID);
-				MainPage = new NavigationPage (new CNE.MainPage ());
+				// Verifica a sessao na API
+				if (service.CheckSession (sessionID)) {
+					// Se estiver OK, inicia normalmente
+					UserData.Save (sessionID);
+					Properties ["SessionID"] = sessionID;
+					MainPage = new NavigationPage (new CNE.MainPage ());
+				} else {
+					MainPage = new LoginPage ();
+				}
 			}
 			else 
 				MainPage = new LoginPage ();			
@@ -41,6 +46,7 @@ namespace CNE
 
 		public void Logout ()
 		{
+			UserData.Save ("");
 			Properties ["SessionID"] = null;
 			MainPage = new LoginPage ();
 		}

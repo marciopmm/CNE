@@ -4,7 +4,7 @@
 			 x:Class="CNE.RegisterPage1"
 			 Title="Crie seu Login">
 	<ContentPage.Content>
-		<Grid>
+		<Grid Padding="20">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="140" />
 				<RowDefinition Height="*" />

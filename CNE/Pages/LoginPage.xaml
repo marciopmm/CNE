@@ -30,6 +30,7 @@
 				<Label Text="Senha"
 					   HorizontalOptions="StartAndExpand" />
 				<Entry x:Name="txtSenha"
+					   IsPassword="true"
 					   Placeholder="Senha" />
 			</StackLayout>
 

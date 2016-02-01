@@ -4,15 +4,63 @@
 			 x:Class="CNE.EmployeeRegisterPage2"
 			 Title="Registro de Profissional">
 	<ContentPage.Content>
-		<ScrollView>
-			<StackLayout Orientation="Vertical">
+		
+		<StackLayout Orientation="Vertical"
+					 Padding="10, 40, 10, 10">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="170" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Label Text="Nome" Grid.Row="0" Grid.Column="0"
+						    VerticalOptions="CenterAndExpand" />
+					<Editor x:Name="celNome" BackgroundColor="#EEEEEE"
+							Grid.Row="0" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Sobrenome" Grid.Row="1" Grid.Column="0"
+							VerticalOptions="CenterAndExpand" />
+					<Editor x:Name="celSobrenome" BackgroundColor="#EEEEEE"
+							Grid.Row="1" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="CPF" Grid.Row="2" Grid.Column="0"
+							VerticalOptions="CenterAndExpand" />
+					<Editor x:Name="celCpf" BackgroundColor="#EEEEEE"
+							Grid.Row="2" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Data de Nascimento" Grid.Row="3" Grid.Column="0" 
+							VerticalOptions="CenterAndExpand"/>
+					<Editor x:Name="celDtNasc" BackgroundColor="#EEEEEE"							
+							Grid.Row="3" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Sexo" Grid.Row="4" Grid.Column="0" 
+							VerticalOptions="CenterAndExpand" />
+					<Picker x:Name="pckSexo" BackgroundColor="#EEEEEE"
+							Grid.Row="4" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand"/>
+				</Grid>
 				<TableView Intent="Form">
 					<TableRoot>
-						<TableSection Title="Dados pessoais">
-							<EntryCell x:Name="celNome" Label="Nome" />
-							<EntryCell x:Name="celSobrenome" Label="Sobrenome" />
-							<EntryCell x:Name="celCpf" Label="CPF" />
-							<EntryCell x:Name="celDtNasc" Label="Data de Nascimento" Placeholder="dd/mm/aaaa" />
+						<TableSection Title="Endereco">
+							<EntryCell x:Name="celCep" Label="Cep" />
+							<EntryCell x:Name="celRua" Label="Rua" IsEnabled="false" />
+							<EntryCell x:Name="celNumero" Label="Número" />
+							<EntryCell x:Name="celComplemento" Label="Complemento" />
+							<EntryCell x:Name="celBairro" Label="Bairro" IsEnabled="false" />
+							<EntryCell x:Name="celCidade" Label="Cidade" IsEnabled="false" />
+							<EntryCell x:Name="celUF" Label="Estado" IsEnabled="false" />
 						</TableSection>
 						<TableSection Title="Dados profissionais">
 							<EntryCell x:Name="celCelular" Label="Tel. Celular" />
@@ -20,23 +68,25 @@
 							<SwitchCell x:Name="swtAceitaDormir" Text="Aceita dormir no trabalho?" />
 						</TableSection>
 						<TableSection x:Name="secEspecialidades" Title="Especialidades">
-							<SwitchCell Text="Arrumadeira" />
-							<SwitchCell Text="Babá" />
-							<SwitchCell Text="Babá folguista" />
-							<SwitchCell Text="Caseiro" />
-							<SwitchCell Text="Copeiro" />
-							<SwitchCell Text="Cuidador de Animais" />
-							<SwitchCell Text="Cuidador de Idosos" />
-							<SwitchCell Text="Diarista" />
-							<SwitchCell Text="Empregada Doméstica" />
-							<SwitchCell Text="Governanta / Mordomo" />
-							<SwitchCell Text="Home Organizer" />
-							<SwitchCell Text="Motorista" />
+							<SwitchCell x:Name="swtArrumadeira" Text="Arrumadeira" />
+							<SwitchCell x:Name="swtBaba" Text="Babá" />
+							<SwitchCell x:Name="swtBabaFol" Text="Babá folguista" />
+							<SwitchCell x:Name="swtCaseiro" Text="Caseiro" />
+							<SwitchCell x:Name="swtCopeiro" Text="Copeiro" />
+							<SwitchCell x:Name="swtCuidAnim" Text="Cuidador de Animais" />
+							<SwitchCell x:Name="swtCuidIdosos" Text="Cuidador de Idosos" />
+							<SwitchCell x:Name="swtDiarista" Text="Diarista" />
+							<SwitchCell x:Name="swtEmpregada" Text="Empregada Doméstica" />
+							<SwitchCell x:Name="swtGovernanta" Text="Governanta / Mordomo" />
+							<SwitchCell x:Name="swtHome" Text="Home Organizer" />
+							<SwitchCell x:Name="swtMotorista" Text="Motorista" />
+						</TableSection>
+						<TableSection x:Name="secMiniCV" Title="Mini Currículo">
+							<EntryCell x:Name="celMiniCV" Placeholder="Escreva sobre você" />
 						</TableSection>
 					</TableRoot>			
 				</TableView>
 				<Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="CenterAndExpand" />
 			</StackLayout>
-		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

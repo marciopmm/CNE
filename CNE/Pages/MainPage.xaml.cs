@@ -32,7 +32,9 @@ namespace CNE
 			pckDistancia.Items.Add ("50");
 			pckDistancia.Items.Add ("100");
 
-
+			btnSair.Clicked += async (sender, e) => {
+				App.Current.Logout();
+			};
 
 			btnProcurar.Clicked += async (object sender, EventArgs e) => {
 				bool valid = true;

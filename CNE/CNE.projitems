@@ -48,6 +48,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Endereco.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Especialidade.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Usuario.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\LoginResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\CepApiResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DetailsPage.xaml">

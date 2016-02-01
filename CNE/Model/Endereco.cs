@@ -33,7 +33,7 @@ namespace CNE
 		public double Latitude { get; set; }
 
 		[JsonProperty(PropertyName="longitude")]
-		public string Longitude { get; set; }	
+		public double Longitude { get; set; }	
 
 	}
 }

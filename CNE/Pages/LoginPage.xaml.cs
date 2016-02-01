@@ -13,11 +13,18 @@ namespace CNE
 
 			btnLogin.Clicked += async (sender, e) => {
 				if (IsValid()) {
-					//TODO: Chamada para a API - LOGIN
-					// Obter o ID da sessão do Usuário
+					var service = new RestService();
 
-					App.Current.Properties["SessionID"] = "SESSIONTESTE";
-					App.Current.ShowMainPage();
+					// Obter o ID da nova sessão do Usuário
+					var result = service.Login (txtEmail.Text.ToLower(), txtSenha.Text);
+
+					// Se Login OK
+					if (result != null) {
+						App.Current.Properties["SessionID"] = result.Token;
+						App.Current.ShowMainPage();
+					} else {
+						DisplayAlert("Ops... :(", "Email e/ou senha inválidos.", "OK");
+					}
 				}
 			};
 

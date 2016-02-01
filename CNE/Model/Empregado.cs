@@ -9,6 +9,9 @@ namespace CNE
 		[JsonProperty(PropertyName="idEmpregado")]
 		public uint IdEmpregado { get; set; }
 
+		[JsonProperty(PropertyName="aceitaDormir")]
+		public bool AceitaDormir { get; set; }
+
 		[JsonProperty(PropertyName="qtdAvaliacoes")]
 		public int QtdAvalicaoes { get; set;}
 
@@ -32,6 +35,9 @@ namespace CNE
 
 		[JsonProperty(PropertyName="textoEspecialidades")]
 		public string TextoEspecialidades { get; set; }
+
+		[JsonProperty(PropertyName="sobre")]
+		public string Sobre { get; set; }
 
 		public Empregado()
 		{

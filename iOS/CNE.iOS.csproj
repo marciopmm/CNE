@@ -132,5 +132,6 @@
     <BundleResource Include="Resources\star5.png" />
     <BundleResource Include="Resources\stargray.png" />
     <BundleResource Include="Resources\staryellow.png" />
+    <BundleResource Include="Resources\icon.png" />
   </ItemGroup>
 </Project>
