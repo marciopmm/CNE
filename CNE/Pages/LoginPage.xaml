@@ -4,49 +4,51 @@
 			 x:Class="CNE.LoginPage"
 			 Title="Login">
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical"
-					 HorizontalOptions="FillAndExpand"
-					 VerticalOptions="CenterAndExpand"
-					 Padding="40"
-					 Spacing="40">
-
-			<Image Source="LogoCNE200.jpg"
-					   Aspect="AspectFit" />
-
-			<StackLayout Orientation="Vertical"
-						 HorizontalOptions="FillAndExpand"
-						 VerticalOptions="CenterAndExpand">
-				<Label Text="Email"
-					   HorizontalOptions="StartAndExpand" />
-				<Entry x:Name="txtEmail"
-					   Placeholder="Email"
+    <ScrollView>
+		  <StackLayout Orientation="Vertical"
 					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="CenterAndExpand" />
-			</StackLayout>
+					   VerticalOptions="CenterAndExpand"
+					   Padding="40"
+					   Spacing="40">
 
-			<StackLayout Orientation="Vertical"
-						 HorizontalOptions="FillAndExpand"
-						 VerticalOptions="CenterAndExpand">
-				<Label Text="Senha"
-					   HorizontalOptions="StartAndExpand" />
-				<Entry x:Name="txtSenha"
-					   IsPassword="true"
-					   Placeholder="Senha" />
-			</StackLayout>
+			  <Image Source="LogoCNE200.jpg"
+					     Aspect="AspectFit" />
 
-			<Button x:Name="btnLogin"
-					HorizontalOptions="FillAndExpand"
-					VerticalOptions="CenterAndExpand"
-					Text="Login" />
+			  <StackLayout Orientation="Vertical"
+						   HorizontalOptions="FillAndExpand"
+						   VerticalOptions="CenterAndExpand">
+				  <Label Text="Email"
+					     HorizontalOptions="StartAndExpand" />
+				  <Entry x:Name="txtEmail"
+					     Placeholder="Email"
+					     HorizontalOptions="FillAndExpand"
+					     VerticalOptions="CenterAndExpand" />
+			  </StackLayout>
 
-			<StackLayout Orientation="Vertical">
-					<Label Text="Não possui conta?" 
-						   Style="{DynamicResource CaptionStyle}"
-						   HorizontalOptions="CenterAndExpand"/>
-					<Button x:Name="btnCriarConta"
-						Text="Crie sua conta! É gratis!"
-						HorizontalOptions="CenterAndExpand" />
-				</StackLayout>
-		</StackLayout>
+			  <StackLayout Orientation="Vertical"
+						   HorizontalOptions="FillAndExpand"
+						   VerticalOptions="CenterAndExpand">
+				  <Label Text="Senha"
+					     HorizontalOptions="StartAndExpand" />
+				  <Entry x:Name="txtSenha"
+					     IsPassword="true"
+					     Placeholder="Senha" />
+			  </StackLayout>
+
+			  <Button x:Name="btnLogin"
+					  HorizontalOptions="FillAndExpand"
+					  VerticalOptions="CenterAndExpand"
+					  Text="Login" />
+
+			  <StackLayout Orientation="Vertical">
+					  <Label Text="Não possui conta?" 
+						     Style="{DynamicResource CaptionStyle}"
+						     HorizontalOptions="CenterAndExpand"/>
+					  <Button x:Name="btnCriarConta"
+						  Text="Crie sua conta! É gratis!"
+						  HorizontalOptions="CenterAndExpand" />
+				  </StackLayout>
+		  </StackLayout>
+    </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

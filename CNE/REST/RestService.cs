@@ -139,7 +139,7 @@ namespace CNE
 			using (HttpClient client = new HttpClient ()) {
 				client.BaseAddress = new Uri (Constants.ApiUrl);
 
-				var response = await client.GetAsync ("Usuario/VerificarEmailDisponivel?email=" + email);
+				var response = await client.GetAsync ("Usuario/VerificarEmailDisponivel?email=" + email.ToLower());
 				return response.IsSuccessStatusCode;
 			}		
 		}
