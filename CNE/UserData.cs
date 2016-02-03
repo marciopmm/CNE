@@ -10,7 +10,7 @@ namespace CNE
 		public static string Load()
 		{		
 			byte[] bytes = null;
-			#if WINDOWS_PHONE
+#if WINDOWS_PHONE
 			StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
 			if (local != null) {
 				var file = local.GetItem(Constants.UserDataFileName);
@@ -18,8 +18,8 @@ namespace CNE
 				bytes = sr.ReadBytes();
 				}
 			}
-			#else
-			string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+#else
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string filePath = Path.Combine(docPath, Constants.UserDataFileName);
 
 			if (File.Exists(filePath)) {
