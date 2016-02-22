@@ -4,21 +4,22 @@
 			 x:Class="CNE.LoginPage"
 			 Title="Login">
 	<ContentPage.Content>
-    <ScrollView>
+		<ScrollView>
 		  <StackLayout Orientation="Vertical"
 					   HorizontalOptions="FillAndExpand"
 					   VerticalOptions="CenterAndExpand"
 					   Padding="40"
-					   Spacing="40">
+					   Spacing="10">
 
 			  <Image Source="LogoCNE200.jpg"
 					     Aspect="AspectFit" />
-
+			  
 			  <StackLayout Orientation="Vertical"
 						   HorizontalOptions="FillAndExpand"
 						   VerticalOptions="CenterAndExpand">
 				  <Label Text="Email"
-					     HorizontalOptions="StartAndExpand" />
+					     HorizontalOptions="StartAndExpand"
+					     Style="{DynamicResource CaptionStyle}" />
 				  <Entry x:Name="txtEmail"
 					     Placeholder="Email"
 					     HorizontalOptions="FillAndExpand"
@@ -29,18 +30,27 @@
 						   HorizontalOptions="FillAndExpand"
 						   VerticalOptions="CenterAndExpand">
 				  <Label Text="Senha"
-					     HorizontalOptions="StartAndExpand" />
+					     HorizontalOptions="StartAndExpand"
+					     Style="{DynamicResource CaptionStyle}"  />
 				  <Entry x:Name="txtSenha"
 					     IsPassword="true"
 					     Placeholder="Senha" />
 			  </StackLayout>
 
-			  <Button x:Name="btnLogin"
-					  HorizontalOptions="FillAndExpand"
-					  VerticalOptions="CenterAndExpand"
-					  Text="Login" />
+			  <StackLayout Orientation="Horizontal"
+						   HorizontalOptions="FillAndExpand"
+						   VerticalOptions="CenterAndExpand">
+				  <Button x:Name="btnLogin"
+						  HorizontalOptions="FillAndExpand"
+						  VerticalOptions="CenterAndExpand"
+						  Text="Login" />
+				  <Button x:Name="btnEsqueci"
+						  HorizontalOptions="FillAndExpand"
+						  VerticalOptions="CenterAndExpand"
+						  Text="Esqueci minha senha... :(" />
+			  </StackLayout>
 
-			  <StackLayout Orientation="Vertical">
+			  <StackLayout Orientation="Vertical" Padding="0, 30, 0, 0" >
 					  <Label Text="Não possui conta?" 
 						     Style="{DynamicResource CaptionStyle}"
 						     HorizontalOptions="CenterAndExpand"/>
@@ -49,6 +59,6 @@
 						  HorizontalOptions="CenterAndExpand" />
 				  </StackLayout>
 		  </StackLayout>
-    </ScrollView>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

@@ -4,51 +4,62 @@
 			 x:Class="CNE.EvaluationPage"
 			 Title="Avaliação">
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical"
-					 HorizontalOptions="FillAndExpand"
-					 VerticalOptions="FillAndExpand"
-					 Padding="20">
-
+		<ScrollView>
 			<StackLayout Orientation="Vertical"
-					 HorizontalOptions="FillAndExpand"
-					 VerticalOptions="FillAndExpand">
-				<Label HorizontalOptions="StartAndExpand"					   
-					   Style="{DynamicResource CaptionStyle}"
-					   Text="Nome do Profissional" />
-			    <Label x:Name="lblNome"
-			    	   HorizontalOptions="StartAndExpand"
-					   Style="{DynamicResource TitleStyle}" />
-			</StackLayout>
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="FillAndExpand"
+						 Padding="20">
 
-			<StackLayout Orientation="Vertical"
-					 HorizontalOptions="FillAndExpand"
-					 VerticalOptions="FillAndExpand">
-				<Label HorizontalOptions="StartAndExpand"					   
-					   Style="{DynamicResource CaptionStyle}"
-					   Text="Estrelas" />
-				<Slider x:Name="sldEstrelas"
-			    	    HorizontalOptions="FillAndExpand"
-					    Style="{DynamicResource TitleStyle}" />
-				<Image x:Name="imgEstrelas"						
-					   Aspect="AspectFit" />
-			</StackLayout>
+				<StackLayout Orientation="Vertical"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="FillAndExpand">
+					<Label HorizontalOptions="StartAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Nome do Profissional" />
+				    <Label x:Name="lblNome"
+				    	   HorizontalOptions="StartAndExpand"
+						   Style="{DynamicResource TitleStyle}" />
+				</StackLayout>
 
-			<StackLayout Orientation="Vertical"
-					 HorizontalOptions="FillAndExpand"
-					 VerticalOptions="FillAndExpand">
-				<Label HorizontalOptions="StartAndExpand"					   
-					   Style="{DynamicResource CaptionStyle}"
-					   Text="Comentário" />
-				<Editor x:Name="txtComentario"
-			    	   	HorizontalOptions="StartAndExpand"
-			    	   	VerticalOptions="FillAndExpand"
-					   	Style="{DynamicResource TitleStyle}" />
-			</StackLayout>
+				<StackLayout Orientation="Horizontal"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="FillAndExpand">
+					<Label HorizontalOptions="StartAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Eu contrataria este profissional novamente" />					
+					<Switch x:Name="swtContrataria"
+							HorizontalOptions="FillAndExpand"
+							IsToggled="true" />
+				</StackLayout>
 
-			<Button x:Name="btnEnviar"
-					HorizontalOptions="CenterAndExpand"
-			    	VerticalOptions="CenterAndExpand"
-					Text="Enviar avaliação" />
-		</StackLayout>
+				<StackLayout Orientation="Vertical"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="FillAndExpand">
+					<Label HorizontalOptions="StartAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Estrelas" />					
+					<Image x:Name="imgEstrelas"						
+						   Aspect="AspectFit" />
+					<Slider x:Name="sldEstrelas"
+				    	    HorizontalOptions="FillAndExpand" />
+				</StackLayout>
+
+				<StackLayout Orientation="Vertical"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="FillAndExpand">
+					<Label HorizontalOptions="StartAndExpand"					   
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Comentário" />
+					<Editor x:Name="txtComentario"
+				    	   	HorizontalOptions="FillAndExpand"
+				    	   	VerticalOptions="FillAndExpand" />
+				</StackLayout>
+
+				<Button x:Name="btnEnviar"
+						HorizontalOptions="CenterAndExpand"
+				    	VerticalOptions="CenterAndExpand"
+						Text="Enviar avaliação" />
+			</StackLayout>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

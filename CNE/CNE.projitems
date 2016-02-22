@@ -50,6 +50,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Usuario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\LoginResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\CepApiResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AvaliacaoResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ChangePasswordResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DetailsPage.xaml">
@@ -74,6 +79,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ChangePasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

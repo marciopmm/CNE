@@ -19,6 +19,28 @@ namespace CNE
 			pckSexo.Items.Add ("Masculino");
 			pckSexo.Items.Add ("Feminino");
 
+			pckDtNasc.MaximumDate = DateTime.Now.AddYears (-16);
+
+			int row = 0;
+
+			foreach (var espec in _especialidades) {
+				gridEspecialidades.RowDefinitions.Add (new RowDefinition () {
+					Height = GridLength.Auto
+				});
+
+				var label = new Label ();
+
+				var swt = new Switch ();
+
+				label.Text = espec.Key;
+				label.HorizontalOptions = LayoutOptions.EndAndExpand;
+				label.VerticalOptions = LayoutOptions.CenterAndExpand;
+
+				gridEspecialidades.Children.Add (label, 0, row);
+				gridEspecialidades.Children.Add (swt, 1, row);
+				row++;
+			}
+
 			btnRegistrar.Clicked += async (sender, e) => {				
 				try
 				{
@@ -29,15 +51,14 @@ namespace CNE
 						empregado.Sexo = pckSexo.SelectedIndex == 0 ? 'M' : 'F';
 						empregado.Cpf = celCpf.Text;
 						empregado.IdPerfil = 2; // Fixo para empregado
-						empregado.DataNascimento = DateTime.ParseExact(celDtNasc.Text, 
-							"dd/MM/yyyy", new CultureInfo("pt-BR"));
+						empregado.DataNascimento = pckDtNasc.Date;
 						empregado.Email = email.ToLower();
 						empregado.Senha = senha;
 
 						empregado.Sobre = celMiniCV.Text;
 						empregado.TelCelular = celCelular.Text;
 						empregado.TelResidencial = celTelefone.Text;
-						empregado.AceitaDormir = swtAceitaDormir.On;
+						empregado.AceitaDormir = swtAceitaDormir.IsToggled;
 
 						empregado.Endereco = new Endereco();
 						empregado.Endereco.Cep = celCep.Text;
@@ -48,16 +69,22 @@ namespace CNE
 						empregado.Endereco.Estado = celUF.Text;
 						empregado.Endereco.Numero = celNumero.Text;
 
+						string label = "";
 						var especs = new List<Especialidade>();
-						//TODO: Será alterado para comportar lista dinâmica de Especialidades
-						foreach(var swt in secEspecialidades)
+						// Carrega a lista de Especialidades
+						for(int i = 0; i < gridEspecialidades.Children.Count; i++)
 						{
-							if (swt is SwitchCell) {
-								var s = (SwitchCell)swt;
-								if (s.On)
+							var element = gridEspecialidades.Children[i];
+
+							if(element is Label) {
+								label = ((Label)element).Text;
+							}
+							else if (element is Switch) {
+								var s = (Switch)element;
+								if (s.IsToggled)
 								especs.Add(new Especialidade(){
-									IdTipoEspecialidade = _especialidades[s.Text],
-									TipoEspecialidade = s.Text
+									IdTipoEspecialidade = _especialidades[label],
+									TipoEspecialidade = label
 								});
 							}
 						}
@@ -106,79 +133,111 @@ namespace CNE
 			List<string> erros = new List<string> ();
 
 			if (string.IsNullOrWhiteSpace (celNome.Text)) {
-				celNome.TextColor = Color.Red;
+#if __IOS__
+				celNome.BackgroundColor = Color.FromHex("FFFFBB");
+#else
+				celNome.BackgroundColor = Color.FromHex("882222");
+#endif
 				erros.Add ("Preencha o Nome");
 			} else {
-				celNome.TextColor = Color.Default;
+				celNome.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celSobrenome.Text)) {
-				celSobrenome.TextColor = Color.Red;
+#if __IOS__
+				celSobrenome.BackgroundColor = Color.FromHex("FFFFBB");
+#else
+				celSobrenome.BackgroundColor = Color.FromHex("882222");
+#endif
 				erros.Add ("Preencha o Sobrenome");
 			} else {
-				celSobrenome.TextColor = Color.Default;
+				celSobrenome.BackgroundColor = Color.Default;
 			}
 
 			if (pckSexo.SelectedIndex < 0) {
+#if __IOS__
 				pckSexo.BackgroundColor = Color.FromHex("FFFFBB");
+#else
+				pckSexo.BackgroundColor = Color.FromHex("882222");
+#endif
 				erros.Add ("Escolha o Sexo");
 			} else {
 				pckSexo.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celCpf.Text)) {
-				celCpf.TextColor = Color.Red;
+				#if __IOS__
+				celCpf.BackgroundColor = Color.FromHex("FFFFBB");
+				#else
+				celCpf.BackgroundColor = Color.FromHex("882222");
+				#endif
 				erros.Add ("Preencha o Cpf");
 			} else {
-				celCpf.TextColor = Color.Default;
+				celCpf.BackgroundColor = Color.Default;
 			}
 
-			if (string.IsNullOrWhiteSpace (celDtNasc.Text)) {
-				celDtNasc.TextColor = Color.Red;
+			if (pckDtNasc.Date.AddYears(16) > DateTime.Now) {
+				#if __IOS__
+				pckDtNasc.BackgroundColor = Color.FromHex("FFFFBB");
+				#else
+				pckDtNasc.BackgroundColor = Color.FromHex("882222");
+				#endif
 				erros.Add ("Preencha o Data de Nascimento");
 			} else {
-				celDtNasc.TextColor = Color.Default;
+				pckDtNasc.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celCep.Text)) {
-				celCep.LabelColor = Color.Red;
+				#if __IOS__
+				celCep.BackgroundColor = Color.FromHex("FFFFBB");
+				#else
+				celCep.BackgroundColor = Color.FromHex("882222");
+				#endif
 				erros.Add ("Preencha o CEP");
 			} else {
-				celCep.LabelColor = Color.Default;
+				celCep.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celNumero.Text)) {
-				celNumero.LabelColor = Color.Red;
+				#if __IOS__
+				celNumero.BackgroundColor = Color.FromHex("FFFFBB");
+				#else
+				celNumero.BackgroundColor = Color.FromHex("882222");
+				#endif
 				erros.Add ("Preencha o Número");
 			} else {
-				celNumero.LabelColor = Color.Default;
+				celNumero.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celCelular.Text)) {
-				celCelular.LabelColor = Color.Red;
+				#if __IOS__
+				celCelular.BackgroundColor = Color.FromHex("FFFFBB");
+				#else
+				celCelular.BackgroundColor = Color.FromHex("882222");
+				#endif
 				erros.Add ("Preencha o Tel. Celular");
 			} else {
-				celCelular.LabelColor = Color.Default;
+				celCelular.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celTelefone.Text)) {
-				celTelefone.LabelColor = Color.Red;
+				#if __IOS__
+				celTelefone.BackgroundColor = Color.FromHex("FFFFBB");
+				#else
+				celTelefone.BackgroundColor = Color.FromHex("882222");
+				#endif
 				erros.Add ("Preencha o Tel. Residencial");
 			} else {
-				celTelefone.LabelColor = Color.Default;
-			}
-
-			if (string.IsNullOrWhiteSpace (swtAceitaDormir.Text)) {
-				erros.Add ("Indique se aceita dormir");
+				celTelefone.BackgroundColor = Color.Default;
 			}
 
 			// Itens de Especialidade
 			int count = 0;
-			foreach (Cell cell in secEspecialidades) {
-				if (cell is SwitchCell && ((SwitchCell)cell).On) {
+			foreach (var cell in gridEspecialidades.Children) {
+				if (cell is Switch && ((Switch)cell).IsToggled) {
 					count++;
 				}
-			}
+			}			
 
 			if (count == 0) {
 				erros.Add ("Escolha pelo menos uma especialidade");

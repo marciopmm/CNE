@@ -2,12 +2,13 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace CNE
 {
 	public class UserData
 	{
-		public static string Load()
+		public static LoginResponse Load()
 		{		
 			byte[] bytes = null;
 #if WINDOWS_PHONE
@@ -15,7 +16,7 @@ namespace CNE
 			if (local != null) {
 				var file = local.GetItem(Constants.UserDataFileName);
 				using (StreamReader sr = new StreamReader(file.Path)) {
-				bytes = sr.ReadBytes();
+					bytes = sr.ReadBytes();
 				}
 			}
 #else
@@ -25,29 +26,33 @@ namespace CNE
 			if (File.Exists(filePath)) {
 				bytes = File.ReadAllBytes(filePath);
 			}
-			#endif
-
-			if (bytes != null)
-				return Decrypt (bytes);
-			else
+#endif
+			try
+			{
+				if (bytes != null)
+					return JsonConvert.DeserializeObject<LoginResponse>(Decrypt (bytes));
+				else
+					return null;
+			} catch {
 				return null;
+			}
 		}
 
-		public static void Save(string sessionId)
+		public static void Save(LoginResponse loginResponse)
 		{
-			byte[] bytes = Encrypt (sessionId);
+			byte[] bytes = Encrypt (loginResponse == null ? "" : JsonConvert.SerializeObject(loginResponse));
 
-			#if WINDOWS_PHONE
+#if WINDOWS_PHONE
 			StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
 			var file = local.CreateFile(filename, CreateCollisionOption.ReplaceExisting);
 			using (StreamWriter sw = new StreamWriter(file.OpenStreamForWrite())) {
 				sw.WriteBytes(bytes);
 			}
-			#else
+#else
 			string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string filePath = Path.Combine(docPath, Constants.UserDataFileName);
 			File.WriteAllBytes(filePath, bytes);
-			#endif
+#endif
 		}
 
 		private static byte[] Encrypt(string data)

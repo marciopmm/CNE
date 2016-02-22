@@ -11,6 +11,9 @@ namespace CNE
 		[JsonProperty(PropertyName="isEmpregado")]
 		public bool IsEmpregado { get; set; }
 
+		[JsonProperty(PropertyName="alterarSenha")]
+		public bool AlterarSenha { get; set; }
+
 		public LoginResponse ()
 		{
 		}

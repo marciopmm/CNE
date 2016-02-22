@@ -12,33 +12,41 @@ namespace CNE
 		{
 			Current = this;
 			var service = new RestService ();
-			var sessionID = UserData.Load ();
+			var loginResponse = UserData.Load ();
 
-			if (string.IsNullOrWhiteSpace(sessionID)) {
-				sessionID = Properties.ContainsKey("SessionID") ? (string)Properties ["SessionID"] : null;
+			if (loginResponse == null) {
+				loginResponse = Properties.ContainsKey("Session") ? (LoginResponse)Properties ["Session"] : null;
 			}
 
-			if (!string.IsNullOrWhiteSpace(sessionID)) {
+			if (loginResponse != null) {
 				// Verifica a sessao na API
-				if (service.CheckSession (sessionID)) {
+				if (service.CheckSession (loginResponse.Token)) {
 					// Se estiver OK, inicia normalmente
-					UserData.Save (sessionID);
-					Properties ["SessionID"] = sessionID;
-					MainPage = new NavigationPage (new CNE.MainPage ());
+					UserData.Save (loginResponse);
+					Properties ["Session"] = loginResponse;
+					if (loginResponse.AlterarSenha)
+						MainPage = new ChangePasswordPage ();
+					else
+						MainPage = new NavigationPage (new CNE.MainPage ());
 				} else {
 					MainPage = new LoginPage ();
 				}
 			}
-			else 
+			else
 				MainPage = new LoginPage ();			
 		}
 
 		public void ShowMainPage ()
 		{	
-			var sessionID = Properties.ContainsKey("SessionID") ? (string)Properties ["SessionID"] : null;
-			if (!string.IsNullOrWhiteSpace (sessionID)) {
-				UserData.Save (sessionID);
-				MainPage = new NavigationPage (new CNE.MainPage ());
+			var loginResponse = Properties.ContainsKey("Session") ? (LoginResponse)Properties ["Session"] : null;
+
+			if (loginResponse != null) {
+				UserData.Save (loginResponse);
+				if (loginResponse.AlterarSenha) {
+					MainPage = new ChangePasswordPage ();
+				} else {
+					MainPage = new NavigationPage (new CNE.MainPage ());
+				}
 			} else {
 				MainPage = new LoginPage ();
 			}
@@ -46,8 +54,9 @@ namespace CNE
 
 		public void Logout ()
 		{
-			UserData.Save ("");
-			Properties ["SessionID"] = null;
+			UserData.Save (null);
+			Properties ["Session"] = null;
+
 			MainPage = new LoginPage ();
 		}
 

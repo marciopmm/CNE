@@ -61,7 +61,7 @@ namespace CNE
 				client.BaseAddress = new Uri (Constants.ApiUrl);
 				client.DefaultRequestHeaders.Clear ();
 				client.DefaultRequestHeaders.Add("X-Auth-Token", 
-					(string)App.Current.Properties ["SessionID"]);
+					((LoginResponse)App.Current.Properties ["Session"]).Token);
 
 				var response = client.GetAsync ("Empregado?cep=" +
 				              cep + "&tipo=" + tipo.ToString () +
@@ -92,7 +92,7 @@ namespace CNE
 				client.BaseAddress = new Uri(Constants.ApiUrl);
 				client.DefaultRequestHeaders.Clear ();
 				client.DefaultRequestHeaders.Add("X-Auth-Token", 
-					(string)App.Current.Properties ["SessionID"]);
+					((LoginResponse)App.Current.Properties ["Session"]).Token);
 
 				var response = await client.PostAsync ("Usuario", content);
 
@@ -142,6 +142,94 @@ namespace CNE
 				var response = await client.GetAsync ("Usuario/VerificarEmailDisponivel?email=" + email.ToLower());
 				return response.IsSuccessStatusCode;
 			}		
+		}
+
+		public async Task<ChangePasswordResponse> ChangePassword(string email)
+		{
+			using (HttpClient client = new HttpClient ()) {
+				client.BaseAddress = new Uri (Constants.ApiUrl);
+
+				var response = await client.GetAsync ("Usuario/RecuperarSenha?email=" + email.ToLower());
+				ChangePasswordResponse result = new ChangePasswordResponse();
+
+				if (response.IsSuccessStatusCode) {
+					result.IsSuccess = true;
+				} else {
+					result.IsSuccess = false;
+
+					switch (response.StatusCode) {
+						case System.Net.HttpStatusCode.NotFound:
+							result.Message = "O email não foi encontrado em nossos registros. Por favor, verifique a ortografia.";
+							break;
+						case System.Net.HttpStatusCode.InternalServerError:
+							result.Message = "Não foi possível realizar sua solicitação devido a um problema no servidor. Entre em contato com nossa equipe através do email 'suporte@cne.net.br'";
+							break;
+						default: 
+						result.Message = "Não foi possível realizar sua solicitação devido a um problema não identificado. Entre em contato com nossa equipe através do email 'suporte@cne.net.br'";
+						break;
+					}
+				}
+
+				return result;
+			}	
+		}
+
+		public async Task<AvaliacaoResponse> SendEvaluation(uint empregadoId, bool contrataria, int estrelas, string comentario)
+		{
+			string json = string.Format ("{{ \"idEmpregado\": {0}, \"contratariaNovamente\": \"{1}\", \"estrelas\": {2}, \"comentario\": \"{3}\" }}",
+				empregadoId,
+				contrataria,
+				estrelas,
+				comentario);
+			StringContent content = new StringContent (json, Encoding.UTF8, "application/json");
+
+			using (HttpClient client = new HttpClient ()) {
+				client.BaseAddress = new Uri(Constants.ApiUrl);
+				client.DefaultRequestHeaders.Clear ();
+				client.DefaultRequestHeaders.Add("X-Auth-Token",
+					((LoginResponse)App.Current.Properties ["Session"]).Token);
+
+				var response = await client.PostAsync ("Avaliacao", content);
+				string strContent = await response.Content.ReadAsStringAsync ();
+
+				if (!response.IsSuccessStatusCode) {
+					Regex rxMessage = new Regex ("\"Message\": ?\"([^\"]+)\"", RegexOptions.IgnoreCase);
+					Match m = rxMessage.Match (strContent);
+
+					if (m.Success)
+						throw new Exception (m.Groups [1].Value);
+					else
+						throw new Exception (response.StatusCode.ToString ());
+				} else {					
+					return JsonConvert.DeserializeObject<AvaliacaoResponse>(strContent);
+				}
+			}
+		}
+
+		public async Task SetNewPassword(string pwd)
+		{
+			string json = string.Format ("{{ \"senha\": \"{0}\" }}", pwd);				
+			StringContent content = new StringContent (json, Encoding.UTF8, "application/json");
+
+			using (HttpClient client = new HttpClient ()) {
+				client.BaseAddress = new Uri(Constants.ApiUrl);
+				client.DefaultRequestHeaders.Clear ();
+				client.DefaultRequestHeaders.Add("X-Auth-Token",
+					((LoginResponse)App.Current.Properties ["Session"]).Token);
+
+				var response = await client.PutAsync ("Usuario/NovaSenha", content);
+				string strContent = await response.Content.ReadAsStringAsync ();
+
+				if (!response.IsSuccessStatusCode) {
+					Regex rxMessage = new Regex ("\"Message\": ?\"([^\"]+)\"", RegexOptions.IgnoreCase);
+					Match m = rxMessage.Match (strContent);
+
+					if (m.Success)
+						throw new Exception (m.Groups [1].Value);
+					else
+						throw new Exception (response.StatusCode.ToString ());
+				}
+			}
 		}
 	}
 }

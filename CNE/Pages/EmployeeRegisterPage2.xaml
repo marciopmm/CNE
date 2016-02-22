@@ -4,9 +4,13 @@
 			 x:Class="CNE.EmployeeRegisterPage2"
 			 Title="Registro de Profissional">
 	<ContentPage.Content>
-		
+		<ScrollView>
 		<StackLayout Orientation="Vertical"
 					 Padding="10, 40, 10, 10">
+			<Label Text="Dados Pessoais"
+				   Style="{DynamicResource TitleStyle}"
+				   HorizontalOptions="CenterAndExpand"
+				   VerticalOptions="CenterAndExpand" />
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -16,77 +20,177 @@
 						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="170" />
+						<ColumnDefinition Width="130" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 
 					<Label Text="Nome" Grid.Row="0" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
 						    VerticalOptions="CenterAndExpand" />
-					<Editor x:Name="celNome" BackgroundColor="#EEEEEE"
+					<Entry x:Name="celNome"
 							Grid.Row="0" Grid.Column="1"
 						    HorizontalOptions="FillAndExpand" 
 							VerticalOptions="CenterAndExpand" />
 					<Label Text="Sobrenome" Grid.Row="1" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
 							VerticalOptions="CenterAndExpand" />
-					<Editor x:Name="celSobrenome" BackgroundColor="#EEEEEE"
+					<Entry x:Name="celSobrenome"
 							Grid.Row="1" Grid.Column="1"
 						    HorizontalOptions="FillAndExpand" 
 							VerticalOptions="CenterAndExpand" />
 					<Label Text="CPF" Grid.Row="2" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
 							VerticalOptions="CenterAndExpand" />
-					<Editor x:Name="celCpf" BackgroundColor="#EEEEEE"
+					<Entry x:Name="celCpf"
 							Grid.Row="2" Grid.Column="1"
 						    HorizontalOptions="FillAndExpand" 
 							VerticalOptions="CenterAndExpand" />
 					<Label Text="Data de Nascimento" Grid.Row="3" Grid.Column="0" 
+							Style="{DynamicResource CaptionStyle}"
 							VerticalOptions="CenterAndExpand"/>
-					<Editor x:Name="celDtNasc" BackgroundColor="#EEEEEE"							
+					<DatePicker x:Name="pckDtNasc"							
 							Grid.Row="3" Grid.Column="1"
 						    HorizontalOptions="FillAndExpand" 
 							VerticalOptions="CenterAndExpand" />
 					<Label Text="Sexo" Grid.Row="4" Grid.Column="0" 
+							Style="{DynamicResource CaptionStyle}"
 							VerticalOptions="CenterAndExpand" />
-					<Picker x:Name="pckSexo" BackgroundColor="#EEEEEE"
+					<Picker x:Name="pckSexo" 
 							Grid.Row="4" Grid.Column="1"
 						    HorizontalOptions="FillAndExpand" 
 							VerticalOptions="CenterAndExpand"/>
 				</Grid>
-				<TableView Intent="Form">
-					<TableRoot>
-						<TableSection Title="Endereco">
-							<EntryCell x:Name="celCep" Label="Cep" />
-							<EntryCell x:Name="celRua" Label="Rua" IsEnabled="false" />
-							<EntryCell x:Name="celNumero" Label="Número" />
-							<EntryCell x:Name="celComplemento" Label="Complemento" />
-							<EntryCell x:Name="celBairro" Label="Bairro" IsEnabled="false" />
-							<EntryCell x:Name="celCidade" Label="Cidade" IsEnabled="false" />
-							<EntryCell x:Name="celUF" Label="Estado" IsEnabled="false" />
-						</TableSection>
-						<TableSection Title="Dados profissionais">
-							<EntryCell x:Name="celCelular" Label="Tel. Celular" />
-							<EntryCell x:Name="celTelefone" Label="Tel. Residencial" />
-							<SwitchCell x:Name="swtAceitaDormir" Text="Aceita dormir no trabalho?" />
-						</TableSection>
-						<TableSection x:Name="secEspecialidades" Title="Especialidades">
-							<SwitchCell x:Name="swtArrumadeira" Text="Arrumadeira" />
-							<SwitchCell x:Name="swtBaba" Text="Babá" />
-							<SwitchCell x:Name="swtBabaFol" Text="Babá folguista" />
-							<SwitchCell x:Name="swtCaseiro" Text="Caseiro" />
-							<SwitchCell x:Name="swtCopeiro" Text="Copeiro" />
-							<SwitchCell x:Name="swtCuidAnim" Text="Cuidador de Animais" />
-							<SwitchCell x:Name="swtCuidIdosos" Text="Cuidador de Idosos" />
-							<SwitchCell x:Name="swtDiarista" Text="Diarista" />
-							<SwitchCell x:Name="swtEmpregada" Text="Empregada Doméstica" />
-							<SwitchCell x:Name="swtGovernanta" Text="Governanta / Mordomo" />
-							<SwitchCell x:Name="swtHome" Text="Home Organizer" />
-							<SwitchCell x:Name="swtMotorista" Text="Motorista" />
-						</TableSection>
-						<TableSection x:Name="secMiniCV" Title="Mini Currículo">
-							<EntryCell x:Name="celMiniCV" Placeholder="Escreva sobre você" />
-						</TableSection>
-					</TableRoot>			
-				</TableView>
+				<Label Text="Endereço"
+				   Style="{DynamicResource TitleStyle}"
+				   HorizontalOptions="CenterAndExpand"
+				   VerticalOptions="CenterAndExpand" />
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="130" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Label Text="CEP" Grid.Row="0" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Entry x:Name="celCep"
+							Grid.Row="0" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Rua" Grid.Row="1" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Label x:Name="celRua" Grid.Row="1" Grid.Column="1"
+						    VerticalOptions="CenterAndExpand" />
+					<Label Text="Número" Grid.Row="2" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Entry x:Name="celNumero"
+							Grid.Row="2" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Complemento" Grid.Row="3" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Entry x:Name="celComplemento"
+							Grid.Row="3" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Bairro" Grid.Row="4" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Label x:Name="celBairro" Grid.Row="4" Grid.Column="1"
+						    VerticalOptions="CenterAndExpand" />
+					<Label Text="Cidade" Grid.Row="5" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Label x:Name="celCidade" Grid.Row="5" Grid.Column="1"
+						    VerticalOptions="CenterAndExpand" />
+					<Label Text="Estado" Grid.Row="6" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+					<Label x:Name="celUF" Grid.Row="6" Grid.Column="1"
+						    VerticalOptions="CenterAndExpand" />					
+				</Grid>
+
+				<Label Text="Dados Profissionais"
+				   Style="{DynamicResource TitleStyle}"
+				   HorizontalOptions="CenterAndExpand"
+				   VerticalOptions="CenterAndExpand" />
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="250" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="170" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Label Text="Tel. Celular" Grid.Row="0" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+				    <Entry x:Name="celCelular"
+							Grid.Row="0" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Tel. Residencial" Grid.Row="1" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+				    <Entry x:Name="celTelefone"
+							Grid.Row="1" Grid.Column="1"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Aceita dormir no trabalho?" Grid.Row="2" Grid.Column="0"
+							Style="{DynamicResource CaptionStyle}"
+						    VerticalOptions="CenterAndExpand" />
+				    <Switch x:Name="swtAceitaDormir"
+							Grid.Row="2" Grid.Column="1"
+						    HorizontalOptions="Start" 
+							VerticalOptions="CenterAndExpand" />
+					<Label Text="Escreva um texto curto dizendo algo sobre suas qualidades e experiências profissionais" 
+							Grid.Row="3" 
+							Grid.Column="0"
+							Grid.ColumnSpan="2"
+							Style="{DynamicResource CaptionStyle}"
+							HorizontalTextAlignment="Center"
+							HorizontalOptions="CenterAndExpand"
+						    VerticalOptions="CenterAndExpand" />
+				    <Editor x:Name="celMiniCV"
+							Grid.Row="4" Grid.Column="0"
+							Grid.ColumnSpan="2"
+						    HorizontalOptions="FillAndExpand" 
+							VerticalOptions="FillAndExpand" />
+				</Grid>
+				<Label Text="Indique suas especialidades" 
+					   Style="{DynamicResource TitleStyle}"
+					   HorizontalOptions="CenterAndExpand"
+					   VerticalOptions="CenterAndExpand" />
+			    <Grid x:Name="gridEspecialidades"
+	    			  HorizontalOptions="FillAndExpand"
+	    			  VerticalOptions="FillAndExpand" >
+	    			<Grid.RowDefinitions></Grid.RowDefinitions>
+	    			<Grid.ColumnDefinitions>
+	    				<ColumnDefinition Width="250" />
+	    				<ColumnDefinition Width="*" />
+	    			</Grid.ColumnDefinitions>
+
+			    </Grid>
+				
 				<Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="CenterAndExpand" />
 			</StackLayout>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

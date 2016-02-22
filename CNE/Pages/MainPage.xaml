@@ -4,58 +4,60 @@
 			 x:Class="CNE.MainPage"
 			 Title="Página Inicial">
 	<ContentPage.Content>
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="180" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="70" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
+		<ScrollView>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="180" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="70" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
 
-			<StackLayout Grid.Row="0"
-						 Grid.Column="0"
-						 Padding="20"
-						 Orientation="Horizontal"
-						 HorizontalOptions="CenterAndExpand"
-						 VerticalOptions="CenterAndExpand">
-				<Image Source="LogoCNE200.jpg"
-					   Aspect="AspectFit" />							
-			</StackLayout>
+				<StackLayout Grid.Row="0"
+							 Grid.Column="0"
+							 Padding="20"
+							 Orientation="Horizontal"
+							 HorizontalOptions="CenterAndExpand"
+							 VerticalOptions="CenterAndExpand">
+					<Image Source="LogoCNE200.jpg"
+						   Aspect="AspectFit" />							
+				</StackLayout>
 
-			<StackLayout Grid.Row="1"
-						 Grid.Column="0"
-						 Orientation="Vertical"
-						 Spacing="20"
-						 Padding="20" >
-				<Label XAlign="Center"
-					   YAlign="Center"
-					   Style="{DynamicResource TitleStyle}"
-					   Text="Procure profissionais próximos a você." />
-				<Entry Placeholder="CEP"
-					   x:Name="txtCep" />
+				<StackLayout Grid.Row="1"
+							 Grid.Column="0"
+							 Orientation="Vertical"
+							 Spacing="20"
+							 Padding="20" >
+					<Label XAlign="Center"
+						   YAlign="Center"
+						   Style="{DynamicResource TitleStyle}"
+						   Text="Procure profissionais próximos a você." />
+					<Entry Placeholder="CEP"
+						   x:Name="txtCep" />
 
-				<Label XAlign="Center"
-					   YAlign="Center"
-					   Style="{DynamicResource CaptionStyle}"
-					   Text="Escolha uma Especialidade" />
-				<Picker x:Name="pckTipo" />
+					<Label XAlign="Center"
+						   YAlign="Center"
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Escolha uma Especialidade" />
+					<Picker x:Name="pckTipo" />
 
-				<Label XAlign="Center"
-					   YAlign="Center"
-					   Style="{DynamicResource CaptionStyle}"
-					   Text="Até quantos quilômetros de você?" />
-				<Picker x:Name="pckDistancia" />
+					<Label XAlign="Center"
+						   YAlign="Center"
+						   Style="{DynamicResource CaptionStyle}"
+						   Text="Até quantos quilômetros de você?" />
+					<Picker x:Name="pckDistancia" />
 
-				<Button x:Name="btnProcurar"
-						Text="Procurar" />
-			</StackLayout>
+					<Button x:Name="btnProcurar"
+							Text="Procurar" />
+				</StackLayout>
 
-			<Button Grid.Row="2"
-					Grid.Column="0"
-					x:Name="btnSair"
-						Text="Sair" />
-		</Grid>
+				<Button Grid.Row="2"
+						Grid.Column="0"
+						x:Name="btnSair"
+							Text="Logout" />
+			</Grid>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

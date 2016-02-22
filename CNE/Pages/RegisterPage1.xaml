@@ -4,62 +4,63 @@
 			 x:Class="CNE.RegisterPage1"
 			 Title="Crie seu Login">
 	<ContentPage.Content>
-		<Grid Padding="20">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="140" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="200" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
+		<ScrollView>
+			<Grid Padding="20">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="140" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="200" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
 
-			<Label  Grid.Row="0"
-					Grid.Column="0"
-					Text="Registre-se no CNE e faça parte da maior comunidade de Profissionais do Brasil!"
-					Style="{DynamicResource TitleStyle}"
-					HorizontalTextAlignment="Center"
-					HorizontalOptions="CenterAndExpand"
-					VerticalOptions="CenterAndExpand" />
-
-			<StackLayout Grid.Row="1"
-						 Grid.Column="0"
-						 Orientation="Vertical"
-						 HorizontalOptions="CenterAndExpand"
-						 VerticalOptions="CenterAndExpand" >							
-
-				<Label Text="Digite seu email - este será seu nome de usuário"
-					   Style="{DynamicResource CaptionStyle}"
-					   HorizontalTextAlignment="Center" />
-
-				<Entry Placeholder="Email"
-						   x:Name="txtEmail" />
-
-				<Label Text="Digite uma senha (fácil de lembrar, difícil de reproduzir)"
-					   Style="{DynamicResource CaptionStyle}"
-					   HorizontalTextAlignment="Center" />
-
-				<Entry Placeholder="Senha"
-					   IsPassword="true"
-					   x:Name="txtSenha" />				
-			</StackLayout>	
-
-			<StackLayout Grid.Row="2"
-						 Grid.Column="0"
-						 Orientation="Vertical"
-						 HorizontalOptions="FillAndExpand"
-						 VerticalOptions="Fill" >
-				<Button x:Name="btnProfissional"
-						Text="Faça meu registro como Profissional!" 
-						BackgroundColor="#A0D6A0"
-						HorizontalOptions="FillAndExpand"
+				<Label  Grid.Row="0"
+						Grid.Column="0"
+						Text="Registre-se no CNE e faça parte da maior comunidade de Profissionais do Brasil!"
+						HorizontalTextAlignment="Center"
+						HorizontalOptions="CenterAndExpand"
 						VerticalOptions="CenterAndExpand" />
-				<Button x:Name="btnContratante"
-						Text="Faça meu registro como Contratante!" 
-						BackgroundColor="#FF8AAA"
-						HorizontalOptions="FillAndExpand"
-						VerticalOptions="CenterAndExpand"/>
-			</StackLayout>	
-		</Grid>		 
+
+				<StackLayout Grid.Row="1"
+							 Grid.Column="0"
+							 Orientation="Vertical"
+							 HorizontalOptions="CenterAndExpand"
+							 VerticalOptions="CenterAndExpand" >							
+
+					<Label Text="Digite seu email - este será seu nome de usuário"
+						   Style="{DynamicResource CaptionStyle}"
+						   HorizontalTextAlignment="Center" />
+
+					<Entry Placeholder="Email"
+							   x:Name="txtEmail" />
+
+					<Label Text="Digite uma senha (fácil de lembrar, difícil de reproduzir)"
+						   Style="{DynamicResource CaptionStyle}"
+						   HorizontalTextAlignment="Center" />
+
+					<Entry Placeholder="Senha"
+						   IsPassword="true"
+						   x:Name="txtSenha" />				
+				</StackLayout>	
+
+				<StackLayout Grid.Row="2"
+							 Grid.Column="0"
+							 Orientation="Vertical"
+							 HorizontalOptions="FillAndExpand"
+							 VerticalOptions="Fill" >
+					<Button x:Name="btnProfissional"
+							Text="Faça meu registro como Profissional!" 
+							BackgroundColor="#A0D6A0"
+							HorizontalOptions="FillAndExpand"
+							VerticalOptions="CenterAndExpand" />
+					<Button x:Name="btnContratante"
+							Text="Faça meu registro como Contratante!" 
+							BackgroundColor="#FF8AAA"
+							HorizontalOptions="FillAndExpand"
+							VerticalOptions="CenterAndExpand"/>
+				</StackLayout>	
+			</Grid>		
+		</ScrollView> 
 	</ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,4 @@
-﻿using System;
-
+using System;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -15,12 +14,10 @@ namespace CNE.Droid
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
+			//Xamarin.Insights.Initialize (global::CNE.Droid.XamarinInsights.ApiKey, this);
 			base.OnCreate (bundle);
-
 			global::Xamarin.Forms.Forms.Init (this, bundle);
-
 			LoadApplication (new App ());
 		}
 	}
 }
-
