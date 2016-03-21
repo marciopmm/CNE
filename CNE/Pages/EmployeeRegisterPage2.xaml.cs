@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Globalization;
 
+using System.Linq;
+
 namespace CNE
 {
 	public partial class EmployeeRegisterPage2 : ContentPage
 	{
 		private IDictionary<string, short> _especialidades;
 
-		public EmployeeRegisterPage2 (string email, string senha)
+		public EmployeeRegisterPage2 (Empregado empregado)
 		{
 			InitializeComponent ();
 
@@ -19,6 +21,7 @@ namespace CNE
 			pckSexo.Items.Add ("Masculino");
 			pckSexo.Items.Add ("Feminino");
 
+			pckDtNasc.Date = DateTime.Now.AddYears (-20);
 			pckDtNasc.MaximumDate = DateTime.Now.AddYears (-16);
 
 			int row = 0;
@@ -31,6 +34,8 @@ namespace CNE
 				var label = new Label ();
 
 				var swt = new Switch ();
+				if (empregado != null)
+					swt.IsToggled = empregado.Especialidades.Any (X => X.TipoEspecialidade == espec.Key);
 
 				label.Text = espec.Key;
 				label.HorizontalOptions = LayoutOptions.EndAndExpand;
@@ -41,26 +46,34 @@ namespace CNE
 				row++;
 			}
 
+			if (empregado != null)
+				Fill (empregado);
+
+			btnCancelar.Clicked += (sender, e) => {
+				App.Current.ShowMainPage();
+			};
+
 			btnRegistrar.Clicked += async (sender, e) => {				
 				try
 				{
 					if (IsValid ()) {
-						Empregado empregado = new Empregado();
 						empregado.Nome = celNome.Text;
 						empregado.Sobrenome = celSobrenome.Text;
 						empregado.Sexo = pckSexo.SelectedIndex == 0 ? 'M' : 'F';
 						empregado.Cpf = celCpf.Text;
 						empregado.IdPerfil = 2; // Fixo para empregado
 						empregado.DataNascimento = pckDtNasc.Date;
-						empregado.Email = email.ToLower();
-						empregado.Senha = senha;
+						empregado.Email = empregado.Email.ToLower();
+						empregado.Senha = empregado.Senha;
 
 						empregado.Sobre = celMiniCV.Text;
 						empregado.TelCelular = celCelular.Text;
 						empregado.TelResidencial = celTelefone.Text;
 						empregado.AceitaDormir = swtAceitaDormir.IsToggled;
 
-						empregado.Endereco = new Endereco();
+						if  (empregado.Endereco == null)
+							empregado.Endereco = new Endereco();
+						
 						empregado.Endereco.Cep = celCep.Text;
 						empregado.Endereco.Logradouro = celRua.Text;
 						empregado.Endereco.Complemento = celComplemento.Text;
@@ -94,7 +107,7 @@ namespace CNE
 						RestService service = new RestService();
 						await service.RegisterEmployeeAsync(empregado);
 
-						await DisplayAlert("Pronto", "Seu usuário foi criado com sucesso.", "OK");
+						await DisplayAlert("Pronto", "Seus dados foram salvos com sucesso.", "OK");
 						App.Current.Logout();
 					}
 				}
@@ -128,107 +141,89 @@ namespace CNE
 			};
 		}
 
+		private void Fill(Empregado empregado)
+		{
+			pckSexo.SelectedIndex = empregado.Sexo == 'M' ? 0 : 1;
+			pckDtNasc.Date = empregado.DataNascimento;
+
+			celNome.Text = empregado.Nome;
+			celSobrenome.Text = empregado.Sobrenome;
+			if (empregado.Endereco != null) {
+				celBairro.Text = empregado.Endereco.Bairro;
+
+				celCep.Text = empregado.Endereco.Cep;
+				celCidade.Text = empregado.Endereco.Cidade;
+				celComplemento.Text = empregado.Endereco.Complemento;
+				celNumero.Text = empregado.Endereco.Numero;
+				celRua.Text = empregado.Endereco.Logradouro;
+				celUF.Text = empregado.Endereco.Estado;
+			}
+			celCpf.Text = empregado.Cpf;
+			celMiniCV.Text = empregado.Sobre;
+			celTelefone.Text = empregado.TelResidencial;
+			celCelular.Text = empregado.TelCelular;
+
+			swtAceitaDormir.IsToggled = empregado.AceitaDormir;
+		}
+
 		private bool IsValid()
 		{
 			List<string> erros = new List<string> ();
 
 			if (string.IsNullOrWhiteSpace (celNome.Text)) {
-#if __IOS__
 				celNome.BackgroundColor = Color.FromHex("FFFFBB");
-#else
-				celNome.BackgroundColor = Color.FromHex("882222");
-#endif
 				erros.Add ("Preencha o Nome");
 			} else {
 				celNome.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celSobrenome.Text)) {
-#if __IOS__
 				celSobrenome.BackgroundColor = Color.FromHex("FFFFBB");
-#else
-				celSobrenome.BackgroundColor = Color.FromHex("882222");
-#endif
 				erros.Add ("Preencha o Sobrenome");
 			} else {
 				celSobrenome.BackgroundColor = Color.Default;
 			}
 
 			if (pckSexo.SelectedIndex < 0) {
-#if __IOS__
 				pckSexo.BackgroundColor = Color.FromHex("FFFFBB");
-#else
-				pckSexo.BackgroundColor = Color.FromHex("882222");
-#endif
 				erros.Add ("Escolha o Sexo");
 			} else {
 				pckSexo.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celCpf.Text)) {
-				#if __IOS__
 				celCpf.BackgroundColor = Color.FromHex("FFFFBB");
-				#else
-				celCpf.BackgroundColor = Color.FromHex("882222");
-				#endif
 				erros.Add ("Preencha o Cpf");
 			} else {
 				celCpf.BackgroundColor = Color.Default;
 			}
 
 			if (pckDtNasc.Date.AddYears(16) > DateTime.Now) {
-				#if __IOS__
 				pckDtNasc.BackgroundColor = Color.FromHex("FFFFBB");
-				#else
-				pckDtNasc.BackgroundColor = Color.FromHex("882222");
-				#endif
 				erros.Add ("Preencha o Data de Nascimento");
 			} else {
 				pckDtNasc.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celCep.Text)) {
-				#if __IOS__
 				celCep.BackgroundColor = Color.FromHex("FFFFBB");
-				#else
-				celCep.BackgroundColor = Color.FromHex("882222");
-				#endif
 				erros.Add ("Preencha o CEP");
 			} else {
 				celCep.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celNumero.Text)) {
-				#if __IOS__
 				celNumero.BackgroundColor = Color.FromHex("FFFFBB");
-				#else
-				celNumero.BackgroundColor = Color.FromHex("882222");
-				#endif
 				erros.Add ("Preencha o Número");
 			} else {
 				celNumero.BackgroundColor = Color.Default;
 			}
 
 			if (string.IsNullOrWhiteSpace (celCelular.Text)) {
-				#if __IOS__
 				celCelular.BackgroundColor = Color.FromHex("FFFFBB");
-				#else
-				celCelular.BackgroundColor = Color.FromHex("882222");
-				#endif
 				erros.Add ("Preencha o Tel. Celular");
 			} else {
 				celCelular.BackgroundColor = Color.Default;
-			}
-
-			if (string.IsNullOrWhiteSpace (celTelefone.Text)) {
-				#if __IOS__
-				celTelefone.BackgroundColor = Color.FromHex("FFFFBB");
-				#else
-				celTelefone.BackgroundColor = Color.FromHex("882222");
-				#endif
-				erros.Add ("Preencha o Tel. Residencial");
-			} else {
-				celTelefone.BackgroundColor = Color.Default;
 			}
 
 			// Itens de Especialidade

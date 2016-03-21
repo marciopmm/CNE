@@ -9,7 +9,7 @@
     <RootNamespace>CNE.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>CNEiOS</AssemblyName>
-    <ReleaseVersion>0.7</ReleaseVersion>
+    <ReleaseVersion>0.11</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -134,5 +134,6 @@
     <BundleResource Include="Resources\stargray.png" />
     <BundleResource Include="Resources\staryellow.png" />
     <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\background.jpg" />
   </ItemGroup>
 </Project>

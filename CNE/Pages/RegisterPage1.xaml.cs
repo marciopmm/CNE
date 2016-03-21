@@ -15,7 +15,11 @@ namespace CNE
 
 			btnProfissional.Clicked += async (sender, e) => {
 				if (await IsValid ()) {
-					App.Current.MainPage = new EmployeeRegisterPage2 (txtEmail.Text, txtSenha.Text);
+					Empregado empregado = new Empregado(){
+						Email = txtEmail.Text,
+						Senha = txtSenha.Text
+					};
+					App.Current.MainPage = new EmployeeRegisterPage2 (empregado);
 				}
 			};
 

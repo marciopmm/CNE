@@ -9,7 +9,7 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="180" />
 					<RowDefinition Height="*" />
-					<RowDefinition Height="70" />
+					<RowDefinition Height="80" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
@@ -53,10 +53,13 @@
 							Text="Procurar" />
 				</StackLayout>
 
-				<Button Grid.Row="2"
-						Grid.Column="0"
-						x:Name="btnSair"
-							Text="Logout" />
+				<StackLayout Grid.Row="2"
+							 Grid.Column="0"
+							 Orientation="Vertical"
+							 Spacing="20"
+							 Padding="20" >
+					<Button x:Name="btnSair" Text="Logout" />
+				</StackLayout>
 			</Grid>
 		</ScrollView>
 	</ContentPage.Content>

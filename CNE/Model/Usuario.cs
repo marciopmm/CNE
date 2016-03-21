@@ -17,7 +17,7 @@ namespace CNE
 		[JsonProperty(PropertyName="sexo")]
 		public char Sexo {get;set;}
 
-		[JsonProperty(PropertyName="cpf")]
+		[JsonProperty(PropertyName="cpfCnpj")]
 		public string Cpf {get;set;}
 
 		[JsonProperty(PropertyName="email")]

@@ -15,9 +15,7 @@
 				   Style="{DynamicResource CaptionStyle}"
 				   HorizontalTextAlignment="Start" />
 				<Entry Placeholder="Nome"
-				   x:Name="txtNome"
-				   HorizontalOptions="FillAndExpand"
-				   VerticalOptions="CenterAndExpand"  />
+				   x:Name="txtNome" />
 			</StackLayout>
 
 			<StackLayout Orientation="Vertical">
@@ -25,9 +23,7 @@
 				   Style="{DynamicResource CaptionStyle}"
 				   HorizontalTextAlignment="Start" />
 				<Entry Placeholder="Sobrenome"
-				   x:Name="txtSobrenome"
-				   HorizontalOptions="FillAndExpand"
-				   VerticalOptions="CenterAndExpand"  />
+				   x:Name="txtSobrenome" />
 			</StackLayout>				
 
 			<StackLayout Orientation="Vertical">
@@ -35,18 +31,14 @@
 				   Style="{DynamicResource CaptionStyle}"
 				   HorizontalTextAlignment="Start" />
 				<Entry Placeholder="CPF"
-				   x:Name="txtCpf"
-				   HorizontalOptions="FillAndExpand"
-				   VerticalOptions="CenterAndExpand"  />
+				   x:Name="txtCpf" />
 			</StackLayout>
 
 			<StackLayout Orientation="Vertical">
 				<Label Text="Sexo"
 				   Style="{DynamicResource CaptionStyle}"
 				   HorizontalTextAlignment="Start" />
-				<Picker x:Name="pckSexo"
-					HorizontalOptions="FillAndExpand"
-					VerticalOptions="CenterAndExpand"  />
+				<Picker x:Name="pckSexo" />
 			</StackLayout>
 
 			<StackLayout Orientation="Vertical">

@@ -22,6 +22,8 @@ namespace CNE
 			pckSexo.Items.Add ("Masculino");
 			pckSexo.Items.Add ("Feminino");
 
+			pckDtNasc.Date = DateTime.Now.AddYears (-20);
+
 			btnRegistrar.Clicked += async (sender, e) => {
 				if (IsValid()) {
 					try 
@@ -41,12 +43,12 @@ namespace CNE
 						RestService service = new RestService();
 						await service.RegisterEmployerAsync(_user);
 
-						DisplayAlert("Parabéns", "Seu registro foi efetuado!", "OK");
+						await DisplayAlert("Parabéns", "Seu registro foi efetuado!", "OK");
 						App.Current.ShowMainPage();
 					}
 					catch (Exception ex)
 					{
-						DisplayAlert("Ops ... :(", "Occoreu um problema durante o registro: " + ex.Message, "OK");
+						await DisplayAlert("Ops ... :(", "Occoreu um problema durante o registro: " + ex.Message, "OK");
 					}
 				}
 			};

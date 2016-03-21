@@ -5,7 +5,7 @@
 			 Title="Crie seu Login">
 	<ContentPage.Content>
 		<ScrollView>
-			<Grid Padding="20">
+			<Grid Padding="20, 40, 20, 20">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="140" />
 					<RowDefinition Height="*" />
@@ -51,14 +51,10 @@
 							 VerticalOptions="Fill" >
 					<Button x:Name="btnProfissional"
 							Text="Faça meu registro como Profissional!" 
-							BackgroundColor="#A0D6A0"
-							HorizontalOptions="FillAndExpand"
-							VerticalOptions="CenterAndExpand" />
+							BackgroundColor="#A0D6A0" />
 					<Button x:Name="btnContratante"
 							Text="Faça meu registro como Contratante!" 
-							BackgroundColor="#FF8AAA"
-							HorizontalOptions="FillAndExpand"
-							VerticalOptions="CenterAndExpand"/>
+							BackgroundColor="#FF8AAA" />
 				</StackLayout>	
 			</Grid>		
 		</ScrollView> 

@@ -3,6 +3,14 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="CNE.LoginPage"
 			 Title="Login">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="buttonSt" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="Yellow" />
+				<Setter Property="BorderRadius" Value="5"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
 		<ScrollView>
 		  <StackLayout Orientation="Vertical"
@@ -16,19 +24,18 @@
 			  
 			  <StackLayout Orientation="Vertical"
 						   HorizontalOptions="FillAndExpand"
-						   VerticalOptions="CenterAndExpand">
+						   VerticalOptions="CenterAndExpand"
+						   Padding="0, 20, 0, 0">
 				  <Label Text="Email"
 					     HorizontalOptions="StartAndExpand"
 					     Style="{DynamicResource CaptionStyle}" />
 				  <Entry x:Name="txtEmail"
-					     Placeholder="Email"
-					     HorizontalOptions="FillAndExpand"
-					     VerticalOptions="CenterAndExpand" />
+					     Placeholder="Email" />
 			  </StackLayout>
 
 			  <StackLayout Orientation="Vertical"
 						   HorizontalOptions="FillAndExpand"
-						   VerticalOptions="CenterAndExpand">
+						   VerticalOptions="CenterAndExpand" >
 				  <Label Text="Senha"
 					     HorizontalOptions="StartAndExpand"
 					     Style="{DynamicResource CaptionStyle}"  />
@@ -41,12 +48,8 @@
 						   HorizontalOptions="FillAndExpand"
 						   VerticalOptions="CenterAndExpand">
 				  <Button x:Name="btnLogin"
-						  HorizontalOptions="FillAndExpand"
-						  VerticalOptions="CenterAndExpand"
 						  Text="Login" />
 				  <Button x:Name="btnEsqueci"
-						  HorizontalOptions="FillAndExpand"
-						  VerticalOptions="CenterAndExpand"
 						  Text="Esqueci minha senha... :(" />
 			  </StackLayout>
 
@@ -55,8 +58,7 @@
 						     Style="{DynamicResource CaptionStyle}"
 						     HorizontalOptions="CenterAndExpand"/>
 					  <Button x:Name="btnCriarConta"
-						  Text="Crie sua conta! É gratis!"
-						  HorizontalOptions="CenterAndExpand" />
+						  Text="Crie sua conta! É gratis!" />
 				  </StackLayout>
 		  </StackLayout>
 		</ScrollView>

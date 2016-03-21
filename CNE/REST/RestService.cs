@@ -118,8 +118,14 @@ namespace CNE
 			using (HttpClient client = new HttpClient ()) {
 				client.BaseAddress = new Uri(Constants.ApiUrl);
 
-				var response = await client.PostAsync ("Empregado", content);
+				if (empregado.IdEmpregado > 0)
+					client.DefaultRequestHeaders.Add ("X-Auth-Token", 
+						((LoginResponse)App.Current.Properties ["Session"]).Token);
 
+				var response = empregado.IdEmpregado == 0 ?
+								await client.PostAsync ("Empregado", content) :
+								await client.PutAsync ("Empregado", content);
+						
 				if (!response.IsSuccessStatusCode) {
 					string strContent = await response.Content.ReadAsStringAsync ();
 
@@ -131,6 +137,30 @@ namespace CNE
 					else
 						throw new Exception (response.StatusCode.ToString());
 				}
+			}
+		}
+
+		public Empregado GetEmployee(string token)
+		{
+			using (HttpClient client = new HttpClient ()) {
+				client.BaseAddress = new Uri(Constants.ApiUrl);
+				client.DefaultRequestHeaders.Clear ();
+				client.DefaultRequestHeaders.Add("X-Auth-Token", token);
+				
+				var response = client.GetAsync ("Empregado").Result;
+				string strContent = response.Content.ReadAsStringAsync ().Result;
+
+				if (!response.IsSuccessStatusCode) {
+					Regex rxMessage = new Regex ("\"Message\": ?\"([^\"]+)\"", RegexOptions.IgnoreCase);
+					Match m = rxMessage.Match (strContent);
+
+					if (m.Success)
+						throw new Exception (m.Groups [1].Value);
+					else
+						throw new Exception (response.StatusCode.ToString ());
+				}
+
+				return JsonConvert.DeserializeObject<Empregado> (strContent);
 			}
 		}
 
@@ -218,6 +248,32 @@ namespace CNE
 					((LoginResponse)App.Current.Properties ["Session"]).Token);
 
 				var response = await client.PutAsync ("Usuario/NovaSenha", content);
+				string strContent = await response.Content.ReadAsStringAsync ();
+
+				if (!response.IsSuccessStatusCode) {
+					Regex rxMessage = new Regex ("\"Message\": ?\"([^\"]+)\"", RegexOptions.IgnoreCase);
+					Match m = rxMessage.Match (strContent);
+
+					if (m.Success)
+						throw new Exception (m.Groups [1].Value);
+					else
+						throw new Exception (response.StatusCode.ToString ());
+				}
+			}
+		}
+
+		public async Task SetVisualization(uint idUsuario)
+		{
+			string json = string.Format ("{{ \"idUsuario\": \"{0}\" }}", idUsuario);				
+			StringContent content = new StringContent (json, Encoding.UTF8, "application/json");
+
+			using (HttpClient client = new HttpClient ()) {
+				client.BaseAddress = new Uri(Constants.ApiUrl);
+				client.DefaultRequestHeaders.Clear ();
+				client.DefaultRequestHeaders.Add("X-Auth-Token",
+					((LoginResponse)App.Current.Properties ["Session"]).Token);
+
+				var response = await client.PostAsync ("Usuario/SalvarNovaVisualizacao", content);
 				string strContent = await response.Content.ReadAsStringAsync ();
 
 				if (!response.IsSuccessStatusCode) {

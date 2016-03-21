@@ -25,7 +25,9 @@ namespace CNE
 			lstPesquisa.ItemTemplate.SetBinding (TextCell.DetailProperty, "TextoEspecialidades"); 
 			
 			lstPesquisa.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) => {
-				await Navigation.PushAsync(new DetailsPage((Empregado)e.SelectedItem));
+				Empregado empregado = (Empregado)e.SelectedItem;
+				await new RestService().SetVisualization(empregado.IdUsuario);
+				await Navigation.PushAsync(new DetailsPage(empregado));
 			};
 		}
 		 

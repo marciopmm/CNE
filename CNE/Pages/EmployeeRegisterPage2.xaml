@@ -49,16 +49,12 @@
 							Style="{DynamicResource CaptionStyle}"
 							VerticalOptions="CenterAndExpand"/>
 					<DatePicker x:Name="pckDtNasc"							
-							Grid.Row="3" Grid.Column="1"
-						    HorizontalOptions="FillAndExpand" 
-							VerticalOptions="CenterAndExpand" />
+							Grid.Row="3" Grid.Column="1" />
 					<Label Text="Sexo" Grid.Row="4" Grid.Column="0" 
 							Style="{DynamicResource CaptionStyle}"
 							VerticalOptions="CenterAndExpand" />
 					<Picker x:Name="pckSexo" 
-							Grid.Row="4" Grid.Column="1"
-						    HorizontalOptions="FillAndExpand" 
-							VerticalOptions="CenterAndExpand"/>
+							Grid.Row="4" Grid.Column="1" />
 				</Grid>
 				<Label Text="Endereço"
 				   Style="{DynamicResource TitleStyle}"
@@ -188,8 +184,14 @@
 	    			</Grid.ColumnDefinitions>
 
 			    </Grid>
-				
-				<Button x:Name="btnRegistrar" Text="Registrar" HorizontalOptions="CenterAndExpand" />
+
+			    <StackLayout Orientation="Horizontal"
+			    			 Padding="0, 20, 0, 0"
+			    			 HorizontalOptions="FillAndExpand"
+			    			 VerticalOptions="CenterAndExpand">
+					<Button x:Name="btnRegistrar" Text="Registrar" />
+					<Button x:Name="btnCancelar" Text="Cancelar" />
+				</StackLayout>
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>
